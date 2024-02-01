@@ -1,6 +1,6 @@
 {
   "name": "workflow-social-media-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Workflow Course Assignment - Improve the quality of a package by establishing helpful workflows that make the development process more efficient",
   "type": "module",
   "main": "index.js",
@@ -14,7 +14,14 @@
     "type": "git",
     "url": "https://github.com/EliseAur/workflow-social-media-client.git"
   },
-  "keywords": ["workflow", "esLint", "Prettier", "Hooks", "Unit-testing", "e2e-testing"],
+  "keywords": [
+    "workflow",
+    "esLint",
+    "Prettier",
+    "Hooks",
+    "Unit-testing",
+    "e2e-testing"
+  ],
   "author": "Noroff, Elise Aurtande",
   "license": "ISC",
   "devDependencies": {

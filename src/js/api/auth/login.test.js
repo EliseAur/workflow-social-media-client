@@ -25,7 +25,6 @@ const mockFetchSuccess = jest.fn().mockResolvedValue({
 
 const mockFetchFailure = jest.fn().mockResolvedValue({
   ok: false,
-  status: 401,
   statusText: "Unauthorized",
 });
 
@@ -69,9 +68,9 @@ describe("login - Storing Token with Valid Credentials", () => {
   it("throws an error when the login request fails", async () => {
     global.fetch = mockFetchFailure;
 
-    await expect(login("invalidUser", "invalidPassword")).rejects.toThrow(
-      mockFetchFailure.statusText,
-    );
+    await expect(
+      login(INVALID_CREDENTIALS.email, INVALID_CREDENTIALS.password),
+    ).rejects.toThrow(mockFetchFailure.statusText);
 
     let errorMessage = mockFetchFailure.statusText;
     expect(typeof errorMessage).toBe("string");

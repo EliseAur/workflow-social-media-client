@@ -14,7 +14,7 @@ const INVALID_CREDENTIALS = {
 const USER_DATA = {
   email: "test@test.no",
   name: "testuser",
-  avatar: "",
+  avatar: "avatarUrl",
   accessToken: "validAccessToken",
 };
 
@@ -25,8 +25,8 @@ const mockFetchSuccess = jest.fn().mockResolvedValue({
 
 const mockFetchFailure = jest.fn().mockResolvedValue({
   ok: false,
-  // status: 401,
-  // statusText: "Unauthorized",
+  status: 401,
+  statusText: "Unauthorized",
 });
 
 describe("login - Storing Token with Valid Credentials", () => {
@@ -46,7 +46,24 @@ describe("login - Storing Token with Valid Credentials", () => {
     expect(storedToken).toBeTruthy();
     expect(storedToken.length).toBeGreaterThan(0);
     console.log("Stored Token:", storedToken);
-    console.log("length of token", storedToken.length);
+    console.log("Length of token", storedToken.length);
+  });
+
+  it("does not find a token in localStorage when provided with invalid credentials", async () => {
+    global.fetch = mockFetchFailure;
+
+    await expect(
+      login(INVALID_CREDENTIALS.email, INVALID_CREDENTIALS.password),
+    ).rejects.toThrow(mockFetchFailure.statusText);
+
+    // Check if there is no token stored in localStorage
+    const storedToken = localStorage.getItem("token");
+    expect(storedToken).toBeNull();
+    console.log("Stored Token:", storedToken);
+    console.log(
+      "StatusText when it does not find a token:",
+      mockFetchFailure.statusText,
+    );
   });
 
   it("throws an error when the login request fails", async () => {
@@ -55,16 +72,15 @@ describe("login - Storing Token with Valid Credentials", () => {
     await expect(login("invalidUser", "invalidPassword")).rejects.toThrow(
       mockFetchFailure.statusText,
     );
-    console.log("Status Text:", mockFetchFailure.statusText);
-  });
 
-  it("throws an error for invalid email format", async () => {
-    global.fetch = mockFetchFailure;
-
-    await expect(
-      login(INVALID_CREDENTIALS.email, INVALID_CREDENTIALS.password),
-    ).rejects.toThrow(mockFetchFailure.statusText);
-
-    console.log("Status Text:", mockFetchFailure.statusText);
+    let errorMessage = mockFetchFailure.statusText;
+    expect(typeof errorMessage).toBe("string");
+    expect(errorMessage.length).toBeGreaterThan(0);
+    console.log("Type of errorMessage:", typeof errorMessage);
+    console.log("Length of errorMessage:", errorMessage.length);
+    console.log(
+      "Error Message/statusText when login request fails:",
+      errorMessage,
+    );
   });
 });

@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "es2021": true,
-    // "global": true,
+    "cypress/globals": true,
     "node": true
     // "es6": true
   },

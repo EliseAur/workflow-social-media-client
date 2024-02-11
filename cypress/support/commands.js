@@ -35,24 +35,19 @@ Cypress.Commands.add("showLoginForm", () => {
   cy.wait(500);
 });
 
-Cypress.Commands.add("login", (email, password) => {
+Cypress.Commands.add("login", (email) => {
   cy.get("#loginForm").find("input[name=email]").type(email);
-  cy.get("#loginForm").find("input[name=password]").type(password);
+  cy.get("#loginForm")
+    .find("input[name=password]")
+    .type(Cypress.env("password"));
   cy.get("#loginForm").find("button[type=submit]").click();
   cy.wait(1500);
 });
 
 Cypress.Commands.add("loginWithTestUser", () => {
-  cy.fixture(
-    "example".then((user) => {
-      cy.login(user.email, Cypress.env("password"));
-    }),
-  );
-});
-
-Cypress.Commands.add("logout", () => {
-  cy.get("button[data-auth=logout]").click();
-  cy.wait(500);
+  cy.fixture("example").then((user) => {
+    cy.login(user.email, Cypress.env("USER_PASSWORD"));
+  });
 });
 
 Cypress.Commands.add("isLoggedIn", () => {
@@ -61,8 +56,13 @@ Cypress.Commands.add("isLoggedIn", () => {
   });
 });
 
+Cypress.Commands.add("logout", () => {
+  cy.get("button[data-auth=logout]").click();
+  cy.wait(500);
+});
+
 Cypress.Commands.add("isLoggedOut", () => {
   cy.window().then((win) => {
-    expect(win.localStorage.getItem("token").to.be.null);
+    expect(win.localStorage.getItem("token")).to.be.null;
   });
 });

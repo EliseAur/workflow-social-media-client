@@ -56,6 +56,26 @@ Cypress.Commands.add("isLoggedIn", () => {
   });
 });
 
+Cypress.Commands.add("loginWithInvalidCredentials", () => {
+  const invalidEmail = "invalid@example.com";
+  const invalidPassword = "invalidPassword123";
+
+  cy.get("#loginForm").find("input[name=email]").type(invalidEmail);
+  cy.get("#loginForm").find("input[name=password]").type(invalidPassword);
+  cy.get("#loginForm").find("button[type=submit]").click();
+  cy.wait(1500);
+});
+
+Cypress.Commands.add("loginWithInvalidPassword", () => {
+  const validEmail = "mikkemus@noroff.no";
+  const invalidPassword = "invalidPassword123";
+
+  cy.get("#loginForm").find("input[name=email]").type(validEmail);
+  cy.get("#loginForm").find("input[name=password]").type(invalidPassword);
+  cy.get("#loginForm").find("button[type=submit]").click();
+  cy.wait(1500);
+});
+
 Cypress.Commands.add("logout", () => {
   cy.get("button[data-auth=logout]").click();
   cy.wait(500);

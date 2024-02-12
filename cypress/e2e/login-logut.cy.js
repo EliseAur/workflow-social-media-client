@@ -11,7 +11,6 @@ describe("loginAndLogout", () => {
     cy.showLoginForm();
   });
 
-  // Issues appear
   it("allows a valid, registered user to login", () => {
     cy.showLoginForm();
 

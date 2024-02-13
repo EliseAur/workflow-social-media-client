@@ -1,10 +1,8 @@
 {
-  // "ignorePatterns": ["cypress.config.js"],
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true,
-    "cypress/globals": true
+    "node": true
     // "es6": true
   },
   "extends": ["eslint:recommended", "plugin:cypress/recommended"],
@@ -22,7 +20,7 @@
       }
     },
     {
-      "files": ["**/*.cy.js", "cypress.config.js", "**/commands.js"],
+      "files": ["**/*.cy.js", "cypress.config.cjs", "**/commands.js"],
       "env": { "cypress/globals": true },
       "plugins": ["cypress"],
       "extends": ["plugin:cypress/recommended"],

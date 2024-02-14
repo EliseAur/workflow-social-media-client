@@ -47,7 +47,7 @@ Cypress.Commands.add("login", (email, password) => {
 });
 
 Cypress.Commands.add("loginWithValidUser", () => {
-  cy.login(Cypress.env("email"), Cypress.env("password"));
+  cy.login(Cypress.env("USER_EMAIL"), Cypress.env("USER_PASSWORD"));
 });
 
 Cypress.Commands.add("isLoggedIn", () => {
@@ -60,17 +60,19 @@ Cypress.Commands.add("loginWithInvalidCredentials", () => {
   const invalidEmail = "invalid@example.com";
   const invalidPassword = "invalidPassword123";
 
-  cy.get("#loginForm").find("input[name=email]").type(invalidEmail);
-  cy.get("#loginForm").find("input[name=password]").type(invalidPassword);
+  cy.get("#loginForm").find("input[name=email]").type("invalid@example.com");
+  cy.get("#loginForm").find("input[name=password]").type("invalidPassword123");
   cy.get("#loginForm").find("button[type=submit]").click();
 });
 
 Cypress.Commands.add("loginWithInvalidPassword", () => {
-  const validEmail = Cypress.env("email");
+  const validEmail = Cypress.env("USER_EMAIL");
   const invalidPassword = "invalidPassword123";
 
-  cy.get("#loginForm").find("input[name=email]").type(validEmail);
-  cy.get("#loginForm").find("input[name=password]").type(invalidPassword);
+  cy.get("#loginForm")
+    .find("input[name=email]")
+    .type(Cypress.env("USER_EMAIL"));
+  cy.get("#loginForm").find("input[name=password]").type("invalidPassword123");
   cy.get("#loginForm").find("button[type=submit]").click();
 });
 

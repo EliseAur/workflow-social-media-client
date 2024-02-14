@@ -16,7 +16,7 @@ jobs:
         with:
           browser: electron
         env:
-          CYPRESS_USER_NAME: ${{ secrets.USER_NAME }}
-          CYPRESS_USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          CYPRESS_USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-          CYPRESS_USER_AVATAR: ${{ secrets.USER_AVATAR }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          USER_AVATAR: ${{ secrets.USER_AVATAR }}

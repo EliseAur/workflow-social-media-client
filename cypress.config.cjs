@@ -8,9 +8,9 @@ module.exports = defineConfig({
     },
   },
   env: {
-    password: process.env.USER_PASSWORD,
-    name: process.env.USER_NAME,
-    email: process.env.USER_EMAIL,
-    avatar: process.env.USER_AVATAR,
+    USER_PASSWORD: process.env.USER_PASSWORD,
+    USER_NAME: process.env.USER_NAME,
+    USER_EMAIL: process.env.USER_EMAIL,
+    USER_AVATAR: process.env.USER_AVATAR,
   },
 });

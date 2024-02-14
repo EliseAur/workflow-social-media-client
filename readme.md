@@ -18,6 +18,12 @@ cd workflow-social-media-client
 # Install dependencies
 npm install
 
+# Build the SASS files
+npm run build
+
+# Start a live server
+npm start
+
 ```
 
 ## Scripts

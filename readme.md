@@ -85,7 +85,7 @@ If you want to contribute to this project, whether it is reporting a bug, sugges
 
 ## License
 
-This project is licensed under the ISC License - see the LICENSE file for details.
+This project is licensed under the ISC License.
 
 ## Author
 

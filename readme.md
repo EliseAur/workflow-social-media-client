@@ -1,5 +1,11 @@
 # Workflow Social Media Client
 
+[![Automated E2E Testing](https://github.com/EliseAur/workflow-social-media-client/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/EliseAur/workflow-social-media-client/actions/workflows/e2e-test.yml)
+
+[![Automated Unit Testing](https://github.com/EliseAur/workflow-social-media-client/actions/workflows/unit-test.yml/badge.svg)](https://github.com/EliseAur/workflow-social-media-client/actions/workflows/unit-test.yml)
+
+[![Deploy static content to Pages](https://github.com/EliseAur/workflow-social-media-client/actions/workflows/pages.yml/badge.svg)](https://github.com/EliseAur/workflow-social-media-client/actions/workflows/pages.yml)
+
 ## Description
 
 This project is part of the Workflow Course Assignment. It focuses on improving the quality of a package by establishing helpful workflows that make the development process more efficient.

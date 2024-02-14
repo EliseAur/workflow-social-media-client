@@ -57,18 +57,12 @@ Cypress.Commands.add("isLoggedIn", () => {
 });
 
 Cypress.Commands.add("loginWithInvalidCredentials", () => {
-  const invalidEmail = "invalid@example.com";
-  const invalidPassword = "invalidPassword123";
-
   cy.get("#loginForm").find("input[name=email]").type("invalid@example.com");
   cy.get("#loginForm").find("input[name=password]").type("invalidPassword123");
   cy.get("#loginForm").find("button[type=submit]").click();
 });
 
 Cypress.Commands.add("loginWithInvalidPassword", () => {
-  const validEmail = Cypress.env("USER_EMAIL");
-  const invalidPassword = "invalidPassword123";
-
   cy.get("#loginForm")
     .find("input[name=email]")
     .type(Cypress.env("USER_EMAIL"));

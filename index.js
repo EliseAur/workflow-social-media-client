@@ -4,10 +4,8 @@ import ui from "./ui/index.js";
 ui();
 router();
 
-// Comment to test the "Deploy static content to pages" action workflow in github
+// Comment to test actions for automated testing
 
-// test again
+// Comment to test actions for automated testing
 
-// test 3
-
-// test 4
+// Comment to test actions for automated testing

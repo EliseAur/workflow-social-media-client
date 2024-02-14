@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout under $GITHUB_WORKSPACE
-        uses: actions/checkout@features/automated-testing
+        uses: actions/checkout@v2
 
       - name: Set up NodeJS
         uses: actions/setup-node@v1

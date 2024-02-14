@@ -9,9 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout under $GITHUB_WORKSPACE
-        uses: actions/checkout@features/automated-testing
+        uses: actions/checkout@v2
 
       - name: run cypress tests with electron
         uses: cypress-io/github-action@v4
         with:
           browser: electron
+        env:
+          CYPRESS_USER_NAME: ${{ secrets.USER_NAME }}
+          CYPRESS_USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          CYPRESS_USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          CYPRESS_USER_AVATAR: ${{ secrets.USER_AVATAR }}

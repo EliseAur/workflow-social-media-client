@@ -41,9 +41,10 @@ npm start
 - **npm run format**: Format code using Prettier.
 - **npm run lint**: Run ESLint to check for linting issues. The issues will appear in the command line (CLI).
 - **npm run lint-fix**: Run ESLint with the --fix option to automatically fix linting issues.
-- **npm test**: Run unit tests using Jest. The tests appears in the command line (CLI)
+- **npm run test-unit**: Run unit tests using Jest. The tests appears in the command line (CLI)
 - **npm run test-e2e**: Open Cypress for end-to-end tests. I recommend to use Electron.
 - **npm run test-e2e-cli**: Run Cypress end-to-end tests in the command line (CLI).
+- **npm run test**: Run both unit-tests and Cypress end-to-end tests in the command line (CLI).
 
 ## Technologies Used
 

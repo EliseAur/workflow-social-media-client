@@ -1,9 +1,11 @@
 import "jest-localstorage-mock";
 import { login } from "./login.js";
 
+require("dotenv/config");
+
 const VALID_CREDENTIALS = {
-  email: "testuser@noroff.no",
-  password: "validPassword123",
+  email: process.env.USER_EMAIL,
+  password: process.env.USER_PASSWORD,
 };
 
 const INVALID_CREDENTIALS = {
@@ -12,9 +14,9 @@ const INVALID_CREDENTIALS = {
 };
 
 const USER_DATA = {
-  email: "testuser@noroff.no",
-  name: "testuser",
-  avatar: "avatarUrl",
+  email: process.env.USER_EMAIL,
+  name: process.env.USER_NAME,
+  avatar: process.env.USER_AVATAR,
   accessToken: "validAccessToken",
 };
 

@@ -1,10 +1,12 @@
 import "jest-localstorage-mock";
 import { logout } from "./logout.js";
 
+require("dotenv/config");
+
 const USER_DATA = {
-  email: "testuser@noroff.no",
-  name: "testuser",
-  avatar: "avatarURL",
+  email: process.env.USER_EMAIL,
+  name: process.env.USER_NAME,
+  avatar: process.env.USER_AVATAR,
   accessToken: "validAccessToken",
 };
 

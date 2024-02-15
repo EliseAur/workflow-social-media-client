@@ -2,17 +2,17 @@ import "jest-localstorage-mock";
 import { login } from "./login.js";
 
 const VALID_CREDENTIALS = {
-  email: "test@test.no",
-  password: "validPassword",
+  email: "testuser@noroff.no",
+  password: "validPassword123",
 };
 
 const INVALID_CREDENTIALS = {
-  email: "invalidEmail",
-  password: "123",
+  email: "invalidEmail@noroff.no",
+  password: "invalidPassword123",
 };
 
 const USER_DATA = {
-  email: "test@test.no",
+  email: "testuser@noroff.no",
   name: "testuser",
   avatar: "avatarUrl",
   accessToken: "validAccessToken",
@@ -30,7 +30,6 @@ const mockFetchFailure = jest.fn().mockResolvedValue({
 
 describe("login - Storing Token with Valid Credentials", () => {
   beforeEach(() => {
-    // Reset localStorage before each test
     localStorage.clear();
     jest.clearAllMocks();
   });
@@ -44,7 +43,7 @@ describe("login - Storing Token with Valid Credentials", () => {
     const storedToken = localStorage.getItem("token");
     expect(storedToken).toBeTruthy();
     expect(storedToken.length).toBeGreaterThan(0);
-    console.log("Stored Token:", storedToken);
+    console.log("Stored Token after successful login:", storedToken);
     console.log("Length of token", storedToken.length);
   });
 
@@ -58,20 +57,12 @@ describe("login - Storing Token with Valid Credentials", () => {
     // Check if there is no token stored in localStorage
     const storedToken = localStorage.getItem("token");
     expect(storedToken).toBeNull();
-    console.log("Stored Token:", storedToken);
+    console.log("Stored Token in failed login:", storedToken);
     console.log("StatusText when it does not find a token:", "Unauthorized");
   });
 
   it("throws an error when the login request fails", async () => {
     global.fetch = mockFetchFailure;
-
-    // await expect(
-    //   login(INVALID_CREDENTIALS.email, INVALID_CREDENTIALS.password),
-    // ).rejects.toThrow(mockFetchFailure.statusText);
-
-    // expect(async () => {
-    //   await login(INVALID_CREDENTIALS.email, INVALID_CREDENTIALS.password);
-    // }).toThrow(mockFetchFailure.statusText);
 
     await expect(
       login(INVALID_CREDENTIALS.email, INVALID_CREDENTIALS.password),

@@ -32,6 +32,10 @@ npm start
 
 ```
 
+## Environment Variables
+
+Create a .env file in the root of the project based on the provided .env.example file. This file should contain necessary environment variables. Do not share or commit your actual .env file. If you don't create the .env file the e2e-tests will not pass if you run them.
+
 ## Scripts
 
 - **npm run build**: Build the SASS files.
@@ -73,7 +77,7 @@ If you want to contribute to this project, whether it is reporting a bug, sugges
 ```
 
 3. **Make your changes**
-4. **Test locally:** Before submitting a PR, test your changes locally to make sure they work as expected. You should also run the unit-test and e2e-tests to see if they pass.
+4. **Test locally:** Before submitting a PR, test your changes locally to make sure they work as expected. You should also run the unit-test and e2e-tests to see if they pass. Make sure you have created a .env file based on the provided .env.example file before you run the tests. The e2e-tests will not pass if this is not created.
 
 ```bash
    npm run test
